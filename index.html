@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-Br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+          content="Utilizar banco de dados para escolher melhor caminho entre dois bairros de São Luís">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Case Topicos Especiais II</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Starter Kit">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Case Topicos Especiais II">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#2F3BA2">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="./bower_components/materialize/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="./bower_components/google-material-design-font-icon/material-design-font-icon.css">
+    <link rel="stylesheet" href="./app/css/app.css">
+
+</head>
+
+<body ng-app="CaseTopicosE2" ng-cloak>
+
+<header>
+    <div class="navbar-fixed">
+        <nav class="blue darken-4">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Tópicos Especiais II</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main ng-view class="grey lighten-3 hide-on-med-and-up"></main>
+
+<main class="hide-on-small-only">
+    <div class="container">
+        <h4 class="truncate">Disponível apenas para celular</h4>
+    </div>
+</main>
+
+<div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large blue darken-3">
+        <i class="mdi ico-add"></i>
+    </a>
+    <ul>
+        <li><a href="#/lista/"
+               class="btn-floating yellow darken-4">
+            <i class="mdi ico-menu"></i></a>
+        </li>
+        <li><a href="#/rotas/"
+               class="btn-floating red darken-4">
+            <i class="mdi ico-directions"></i></a>
+        </li>
+    </ul>
+</div>
+
+<!-- JavaScript for: jQuery, angular, materialize, and angular-materialize. All of which are needed. -->
+<script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./bower_components/materialize/dist/js/materialize.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-materialize/src/angular-materialize.js"></script>
+<script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="./bower_components/barbara-js/barbarajs.min.js"></script>
+<script type="text/javascript" src="./app/js/app.js"></script>
+<!-- Built with love using Web Starter Kit -->
+</body>
+<!-- Add your site or app content here -->
+
+</html>

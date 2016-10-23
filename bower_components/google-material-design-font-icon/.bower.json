@@ -1,0 +1,15 @@
+{
+  "name": "google-material-design-font-icon",
+  "homepage": "https://github.com/Seb-L/Google-Material-Design-Font-Icon",
+  "version": "0.1.0",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "8f83e516235ef32becc32e9f12a4d3d303ea0324"
+  },
+  "_source": "https://github.com/Seb-L/Google-Material-Design-Font-Icon.git",
+  "_target": "^0.1.0",
+  "_originalSource": "google-material-design-font-icon",
+  "_direct": true
+}

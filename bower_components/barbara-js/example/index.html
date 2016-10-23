@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="App-Example">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Barbara-JS</title>
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
+</head>
+
+<body ng-controller="AppController" ng-cloak>
+
+    <div class="container-fluid">
+
+        <input type="checkbox"
+               ng-model="checkboxs">
+
+        <hr>
+
+        <div alert-bootstrap></div>
+
+        <hr>
+
+        <div pagination-bootstrap ></div>
+
+        <hr>
+
+        <div loading-bootstrap></div>
+
+        <pre>{{data | json}}</pre>
+
+        <pre ng-init="completo = false">
+            {{"2015-05-06"|timeago}}
+            {{ "sfsdfsfsfsfsfsdfsdfsdfsfsdfsdfdf" | cuttext: completo: 10 }}
+        </pre>
+
+        <button ng-click="completo = !completo">
+            {{completo ? 'Exibir menos' : 'Exibir tudo'}}
+        </button>
+
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="./../bower_components/angular/angular.min.js" type="application/javascript"></script>
+    <script src="./../barbarajs.min.js" type="application/javascript"></script>
+    <script src="./app.js" type="application/javascript"></script>
+</body>
+
+</html>

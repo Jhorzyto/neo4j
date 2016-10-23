@@ -1,0 +1,79 @@
+<div class="blue darken-3 hoverable white-text">
+    <div class="container">
+        <div class="row" style="padding-bottom: 5%; text-transform: uppercase">
+            <form class="col s12" method="post"
+                  ng-submit="melhorCaminho(melhorCaminhoForm.$valid)"
+                  name="melhorCaminhoForm"
+                  novalidate>
+                <div class="col s12">
+                    <h5 class="center-align"><small>Buscar pelo menor caminho</small></h5>
+                </div>
+
+                <div input-field class="col s12">
+                    <i class="mdi ico-radio-button-on prefix"></i>
+                    <select id="fromInput"
+                            ng-options="bairro.id as bairro.nome for bairro in bairros"
+                            ng-model="calcular.de"
+                            material-select
+                            required
+                            watch>
+                    </select>
+                    <label for="fromInput" class="white-text">De:</label>
+                </div>
+
+                <div input-field class="col s12">
+                    <i class="mdi ico-place prefix"></i>
+                    <select id="toInput"
+                            ng-options="bairro.id as bairro.nome for bairro in bairros"
+                            ng-model="calcular.para"
+                            material-select
+                            required
+                            watch>
+                    </select>
+                    <label for="toInput" class="white-text">Para:</label>
+                </div>
+
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light white blue-text text-darken-3 right"
+                            ng-disabled="melhorCaminhoForm.$invalid"
+                            type="submit">
+                        BUSCAR
+                        <i class="mdi ico-search right"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" ng-if="!error && caminhos">
+        <div class="col s12">
+            <p>A rota mais rápida de <strong>{{caminhos.de.bairro}}</strong> até <strong>{{caminhos.para.bairro}}</strong> têm <strong>{{caminhos.total_km}}km</strong> de distância.</p>
+        </div>
+        <div class="col s12 m6"
+             ng-repeat="caminho in caminhos.relacionamento"
+             ng-hide="caminho.de.id == caminho.para.id">
+            <div class="card grey lighten-5 z-depth-1">
+                <div class="card-content grey-text text-darken-3">
+                    <h5 class="truncate">
+                        {{caminho.de.bairro}} <i class="mdi ico-arrow-forward"></i> {{caminho.para.bairro}}
+                    </h5>
+                    <h6>São {{caminho.distancia_km}}km de <strong>{{caminho.de.bairro}}</strong> até <strong>{{caminho.para.bairro}}</strong>.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="error">
+        <div class="col s12">
+            <div class="card grey lighten-5 z-depth-1">
+                <div class="card-content grey-text text-darken-3">
+                    <h6>
+                        {{error}}
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

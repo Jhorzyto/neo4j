@@ -1,0 +1,31 @@
+{
+  "name": "Case Topicos Especiais II",
+  "authors": [
+    "jhordan <jhorzyto@gmail.com>"
+  ],
+  "description": "Utilizar banco de dados para escolher melhor caminho entre dois bairros de São Lu�ís",
+  "main": "index.html",
+  "keywords": [
+    "case",
+    "neo4j",
+    "nosql",
+    "dijkstra",
+    "steve"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-materialize": "^0.2.1",
+    "google-material-design-font-icon": "^0.1.0",
+    "barbara-js": "^1.2.1",
+    "angular-route": "^1.5.8",
+    "angular-touch": "^1.5.8"
+  }
+}

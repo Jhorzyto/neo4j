@@ -1,0 +1,113 @@
+<div class="blue darken-3 hoverable white-text" ng-if="relacionamento">
+    <div class="container">
+        <div class="row" style="padding-bottom: 5%; text-transform: uppercase">
+            <form class="col s12" method="post"
+                  ng-submit="adicionarRelacionamento(adicionarRelacionamentoForm.$valid)"
+                  name="adicionarRelacionamentoForm"
+                  novalidate>
+                <div class="col s12">
+                    <h5 class="center-align"><small>Adicionar Quilometros de {{bairroRelacionamento.nome}}</small></h5>
+                </div>
+
+                <div input-field class="col s12">
+                    <i class="mdi ico-place prefix"></i>
+                    <select id="toInput"
+                            ng-options="bairro.id as bairro.nome for bairro in bairros"
+                            ng-model="relacionamento.para"
+                            material-select
+                            required
+                            watch>
+                    </select>
+                    <label for="toInput" class="white-text">Para:</label>
+                </div>
+
+                <div input-field class="col s12">
+                    <i class="mdi ico-beenhere prefix"></i>
+                    <input type="number"
+                           id="distanciaInput"
+                           step="0.01"
+                           ng-model="relacionamento.km"
+                           required>
+                    </select>
+                    <label for="distanciaInput" class="white-text">Distância em KM:</label>
+                </div>
+
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light white blue-text text-darken-3 right"
+                            ng-disabled="adicionarRelacionamentoForm.$invalid"
+                            type="submit">
+                        ADICIONAR
+                        <i class="mdi ico-directions right"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<div class="white">
+    <div class="container">
+        <div class="row" ng-if="error">
+            <div class="col s12">
+                <div class="card grey lighten-5 z-depth-1">
+                    <div class="card-content grey-text text-darken-3">
+                        <h6>
+                            {{error}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <table>
+                    <thead>
+                    <tr>
+                        <th data-field="nome">Bairro</th>
+                        <th data-field="action" class="center-align">
+                            <i class="mdi ico-settings"></i>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div input-field
+                                 class="blue-text text-darken-3">
+                                <i class="mdi ico-place prefix"></i>
+                                <input type="text"
+                                       id="bairroInput"
+                                       ng-model="formulario.bairro"
+                                       ng-minlength="3"
+                                       ng-maxlength="50"
+                                       length="50"
+                                       required>
+                                <label for="bairroInput">Nome do novo bairro</label>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button type="button"
+                                    ng-click="adicionarBairro()"
+                                    ng-disabled="!formulario.bairro"
+                                    class="waves-effect waves-light btn blue darken-3">
+                                <i class="mdi ico-add"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="bairro in bairros | orderBy:'nome'"
+                        ng-swipe-left="apagarBairro(bairro.id)">
+                        <td>{{bairro.nome}}</td>
+                        <td class="center-align">
+                            <button type="button"
+                                    ng-click="relacionamentoForm(bairro)"
+                                    class="waves-effect waves-light btn green">
+                                <i class="mdi ico-directions"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
