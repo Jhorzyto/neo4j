@@ -23,7 +23,7 @@ app.service('RotasService', function ($request) {
 
     this.obterBairros = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://localhost/neo4j/listar.php')
+        $request.get('http://neo4j-t.esy.es/listar.php')
             .removeAjaxHeader()
             .send(function (data) {
                 $scope.bairros = data;
@@ -34,7 +34,7 @@ app.service('RotasService', function ($request) {
 
     this.melhorCaminho = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://localhost/neo4j/melhor_caminho.php')
+        $request.get('http://neo4j-t.esy.es/melhor_caminho.php')
             .addParams($scope.calcular)
             .removeAjaxHeader()
             .send(function (data) {
@@ -50,7 +50,7 @@ app.service('ListaService', function ($request, RotasService) {
 
     this.apagarBairro = function ($scope, id) {
         $scope.error = undefined;
-        $request.get('http://localhost/neo4j/apagar.php')
+        $request.get('http://neo4j-t.esy.es/apagar.php')
             .addParams({
                 bairro : id
             })
@@ -64,7 +64,7 @@ app.service('ListaService', function ($request, RotasService) {
 
     this.adicionarBairro = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://localhost/neo4j/cadastrar.php')
+        $request.get('http://neo4j-t.esy.es/cadastrar.php')
             .addParams({
                 bairro : $scope.formulario.bairro
             })
@@ -79,7 +79,7 @@ app.service('ListaService', function ($request, RotasService) {
 
     this.adicionarRelacionamento = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://localhost/neo4j/cadastrar_relacionamento.php')
+        $request.get('http://neo4j-t.esy.es/cadastrar_relacionamento.php')
             .addParams($scope.relacionamento)
             .removeAjaxHeader()
             .send(function () {
