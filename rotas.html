@@ -1,4 +1,4 @@
-<div class="blue darken-3 hoverable white-text" ng-show="bairros">
+<div class="blue darken-3 hoverable white-text  hide-on-med-and-up" ng-show="bairros">
     <div class="container">
         <div class="row" style="padding-bottom: 5%; text-transform: uppercase">
             <form class="col s12" method="post"
@@ -47,7 +47,20 @@
     </div>
 </div>
 
+<div class="container hide-on-small-only">
+    <div class="row">
+        <div class="col s12">
+            <h5 class="center-align"><strong>Por favor, gire o seu celular! <i class="mdi ico-screen-rotation"></i></strong></h5>
+        </div>
+    </div>
+</div>
+
 <div class="container">
+    <div class="row" ng-if="carregando">
+        <div class="col s12">
+            <p><strong>{{carregando}}</strong></p>
+        </div>
+    </div>
     <div class="row" ng-if="!error && caminhos">
         <div class="col s12">
             <p>A rota mais rápida de <strong>{{caminhos.de.bairro}}</strong> até <strong>{{caminhos.para.bairro}}</strong> têm <strong>{{caminhos.total_km}}km</strong> de distância.</p>

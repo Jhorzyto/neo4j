@@ -30,7 +30,7 @@
     <meta name="msapplication-TileColor" content="#2F3BA2">
 
     <!-- Color the status bar on mobile devices -->
-    <meta name="theme-color" content="#2F3BA2">
+    <meta name="theme-color" content="#1565c0">
 
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
@@ -49,19 +49,13 @@
     <div class="navbar-fixed">
         <nav class="blue darken-4">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Tópicos Especiais II</a>
+                <a href="#" class="brand-logo">JhorMaps</a>
             </div>
         </nav>
     </div>
 </header>
 
-<main ng-view class="grey lighten-3 hide-on-med-and-up"></main>
-
-<main class="hide-on-small-only">
-    <div class="container">
-        <h4 class="truncate">Disponível apenas para celular</h4>
-    </div>
-</main>
+<main ng-view class="grey lighten-3"></main>
 
 <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large blue darken-3">
@@ -86,6 +80,8 @@
 <script type="text/javascript" src="./bower_components/angular-materialize/src/angular-materialize.js"></script>
 <script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="./bower_components/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="./bower_components/re-tree/re-tree.min.js"></script>
+<script type="text/javascript" src="./bower_components/ng-device-detector/ng-device-detector.min.js"></script>
 <script type="text/javascript" src="./bower_components/barbara-js/barbarajs.min.js"></script>
 <script type="text/javascript" src="./app/js/app.js"></script>
 <!-- Built with love using Web Starter Kit -->

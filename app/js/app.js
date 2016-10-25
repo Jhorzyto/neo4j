@@ -1,29 +1,61 @@
-var app = angular.module('CaseTopicosE2', ['ngRoute', 'ngTouch', 'ui.materialize', 'Barbara-Js']);
+var app = angular.module('CaseTopicosE2', ['ngRoute', 'ngTouch', 'ui.materialize', 'Barbara-Js', 'ng.deviceDetector']);
 
 app.config(function ($routeProvider) {
         $routeProvider
             .when('/rotas/', {
                 templateUrl : 'rotas.html',
-                controller  : 'RotasController'
+                controller  : 'RotasController',
+                resolve     : {
+                    inicialmento: function(JhorMapsFactory){
+                        return JhorMapsFactory.inicialmento();
+                    }
+                }
             })
             .when('/lista/', {
                 templateUrl : 'lista.html',
-                controller  : 'ListaController'
+                controller  : 'ListaController',
+                resolve     : {
+                    inicialmento: function(JhorMapsFactory){
+                        return JhorMapsFactory.inicialmento();
+                    }
+                }
+            })
+            .when('/desktop/', {
+                templateUrl : 'desktop.html'
             })
             //rota principal
             .otherwise({redirectTo: '/rotas/'});
     }
 );
 
-app.run(function () {
+app.run(function ($rootScope, deviceDetector) {
+    $rootScope.deviceDetector = deviceDetector.raw.device;
+    $rootScope.url = 'http://191.234.177.246/api/';
     console.log('bodybuilder poha');
 });
 
-app.service('RotasService', function ($request) {
+app.factory('JhorMapsFactory', function ($q, $location, $rootScope) {
+    return {
+        inicialmento : function(){
+            var deferred      = $q.defer();
+            var device        = $rootScope.deviceDetector;
+            $rootScope.mobile = device['android'] || device['iphone'] || device['windows-phone'];
+            if($rootScope.mobile){
+                deferred.resolve(device);
+            } else {
+                $location.path("/desktop/");
+                deferred.reject(device);
+            }
+            return deferred.promise;
+        }
+    }
+});
+
+app.service('RotasService', function ($request, $rootScope) {
 
     this.obterBairros = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://neo4j-t.esy.es/listar.php')
+        $request.get($rootScope.url + '/listar.php')
             .removeAjaxHeader()
             .send(function (data) {
                 $scope.bairros = data;
@@ -34,23 +66,26 @@ app.service('RotasService', function ($request) {
 
     this.melhorCaminho = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://neo4j-t.esy.es/melhor_caminho.php')
+        $scope.carregando = "Calculando melhor caminho...";
+        $request.get($rootScope.url + '/melhor_caminho.php')
             .addParams($scope.calcular)
             .removeAjaxHeader()
             .send(function (data) {
-                $scope.caminhos = data;
+                $scope.caminhos   = data;
+                $scope.carregando = undefined;
             }, function (meta) {
-                $scope.error = meta.error_message;
+                $scope.error      = meta.error_message;
+                $scope.carregando = undefined;
             })
     };
 
 });
 
-app.service('ListaService', function ($request, RotasService) {
+app.service('ListaService', function ($request, $rootScope, RotasService) {
 
     this.apagarBairro = function ($scope, id) {
         $scope.error = undefined;
-        $request.get('http://neo4j-t.esy.es/apagar.php')
+        $request.get($rootScope.url + '/apagar.php')
             .addParams({
                 bairro : id
             })
@@ -64,7 +99,7 @@ app.service('ListaService', function ($request, RotasService) {
 
     this.adicionarBairro = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://neo4j-t.esy.es/cadastrar.php')
+        $request.get($rootScope.url + '/cadastrar.php')
             .addParams({
                 bairro : $scope.formulario.bairro
             })
@@ -79,7 +114,7 @@ app.service('ListaService', function ($request, RotasService) {
 
     this.adicionarRelacionamento = function ($scope) {
         $scope.error = undefined;
-        $request.get('http://neo4j-t.esy.es/cadastrar_relacionamento.php')
+        $request.get($rootScope.url + '/cadastrar_relacionamento.php')
             .addParams($scope.relacionamento)
             .removeAjaxHeader()
             .send(function () {
@@ -91,7 +126,7 @@ app.service('ListaService', function ($request, RotasService) {
     };
 });
 
-app.controller('RotasController', function ($scope, RotasService) {
+app.controller('RotasController', function ($scope, inicialmento, RotasService) {
 
     $scope.calcular = {};
     $scope.error    = undefined;
@@ -105,7 +140,7 @@ app.controller('RotasController', function ($scope, RotasService) {
 
 });
 
-app.controller('ListaController', function ($scope, RotasService, ListaService) {
+app.controller('ListaController', function ($scope, inicialmento, RotasService, ListaService) {
 
     $scope.error = undefined;
 

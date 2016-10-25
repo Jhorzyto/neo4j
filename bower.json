@@ -26,6 +26,7 @@
     "google-material-design-font-icon": "^0.1.0",
     "barbara-js": "^1.2.1",
     "angular-route": "^1.5.8",
-    "angular-touch": "^1.5.8"
+    "angular-touch": "^1.5.8",
+    "ng-device-detector": "^3.0.1"
   }
 }
